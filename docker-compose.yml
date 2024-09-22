@@ -1,7 +1,8 @@
-version: '3'
+version: '4'
 services:
-  connortest:
+  wait-docker:
     build: .
+    container_name: Wait-Docker
     environment:
       # Wait time in TIMED mode. If you use WATCH mode, this will check for the wwtch file for this time period, repeatedly, until the file is found. In WATCH mode, the container will report UNHEALTHY after this time period until the file is found 
       - WAIT_TIME=5
