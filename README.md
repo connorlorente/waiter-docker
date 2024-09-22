@@ -51,7 +51,7 @@ This mode is particularly useful for scenarios where containers rely on files st
               start_period: 20s
 
 # Manual Build Instructions
-
+### Manual build instructions may be outdated and are intended for developers only. Use them at your own discretion. For a more user-friendly experience, we highly recommend using the Docker Compose file **(docker-compose.yml)**.
 ## Test the image
      docker-compose up --build
 
