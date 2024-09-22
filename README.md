@@ -31,7 +31,7 @@ In this mode, the Docker container checks for the file **/filecheckpath/testfile
 
 WATCH mode is particularly useful for scenarios where containers rely on files stored on network drives or NAS devices, such as media servers or company file sharing services. To implement this setup, you'll need to use volumes in your Docker Compose file to mount the directory containing the file.
 
-### WATCH Mode Example with Volume Mounting
+### WATCH Mode Example with Volume Mounting (Docker Compose file)
 
 ```yaml
 version: '4'
@@ -54,6 +54,29 @@ services:
       # would check for testfile.txt in /root/testfile.txt on the host machine
       # Useful for checking that network drives or temporary files are available before starting other dockers
       - /host/path/here:/container/path/here
+    healthcheck:
+      test: ["CMD", "test", "-f", "/tmp/healthy"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+```
+
+### TIMED Mode Example (Docker Compose file)
+
+```yaml
+version: '4'
+services:
+  wait-docker:
+    container_name: Wait-Docker
+    image: connorc419/waiter:latest
+    environment:
+      # Wait time in TIMED mode. If you use WATCH mode, this will check for the watch file for this time period, repeatedly, until the file is found. In WATCH mode, the container will report UNHEALTHY after this time period until the file is found
+      - WAIT_TIME=5
+      # Supported modes are WATCH and TIMED - WATCH will monitor for a file existing, timed is just a delay/timer
+      - MODE=TIMED
+      # Time in seconds to mark as healthy until the docker self terminates. Set to 0 to disable this behavior
+      - STOP_TIME=10
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]
       interval: 5s
