@@ -2,6 +2,8 @@
 
 **Is your file sharing service, media server, or Docker container dependent on network drives or other resources that need to be ready before starting?** If so, Waiter Docker is the solution. This container automatically waits for these dependencies to become available before launching your services, ensuring smooth and efficient operation and correct startup order.
 
+This was created because, as far as we can tell - nothing like it exists!
+
 ## What Can Waiter Docker Do?
 
 Waiter Docker offers two modes: **TIMED** and **WATCH**.
