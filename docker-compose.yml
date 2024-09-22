@@ -10,9 +10,12 @@ services:
       # Time in seconds to mark as healthy until the docker self terminates. Set to 0 to disable this behaviour 
       - STOP_TIME=10
       # Watch file to check for, not needed if using TIMED mode
-      - WATCH_FILE="testfile.txt"
+      - WATCH_FILE=/filecheckpath/testfile.txt
     volumes:
-      # The entire volumes section is only required if you are using WATCH mode
+      # The entire volumes section is only required if you are using WATCH mode 
+      # e.g /root:/filecheckpath - Then setting WATCH_FILE to /filecheckpath/testfile.txt
+      # would check for testfile.txt in /root/testfile.txt on the host machine 
+      # Useful for checking that network drives or temporary files are available before starting other dockers 
       - /host/path/here:/container/path/here
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]
