@@ -5,7 +5,7 @@ services:
     environment:
       - WAIT_TIME=5
       - STOP_TIME=10
-      - WATCH_FILE=/test.txt
+      - WATCH_FILE="tesegegt.txt"
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]
       interval: 5s
