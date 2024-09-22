@@ -12,5 +12,6 @@
 # Build for arm
     # docker buildx create --name mybuilder --use
     # docker run --privileged --rm tonistiigi/binfmt --install all
-    # docker buildx build --platform linux/amd64,linux/arm64 -t connorc419/waiter:0.3 --push .
+    # docker buildx build --platform linux/amd64,linux/arm64 -t connorc419/waiter:0.4 --push .
+    # docker buildx build --platform linux/amd64,linux/arm64 -t connorc419/waiter:latest --push .
     # docker buildx imagetools inspect connorc419/waiter:0.3
