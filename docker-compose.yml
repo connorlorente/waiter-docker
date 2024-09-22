@@ -4,7 +4,7 @@ services:
     build: .
     environment:
       - WAIT_TIME=5
-      # - STOP_TIME=10
+      - STOP_TIME=10
       - WATCH_FILE=/test.txt
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]
