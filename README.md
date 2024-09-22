@@ -37,8 +37,8 @@ WATCH mode is particularly useful for scenarios where containers rely on files s
 version: '4'
 services:
   wait-docker:
-    build: .
     container_name: Wait-Docker
+    image: connorc419/waiter:latest
     environment:
       # Wait time in TIMED mode. If you use WATCH mode, this will check for the watch file for this time period, repeatedly, until the file is found. In WATCH mode, the container will report UNHEALTHY after this time period until the file is found
       - WAIT_TIME=5
