@@ -1,4 +1,4 @@
-# Waiter Docker - a Docker for making other docker containers wait!
+# Waiter Docker - a Docker container for making other docker containers wait!
 **Is your file sharing service, media server, or Docker container dependent on network drives or other resources that need to be ready before starting? If so, we have the solution for you. This container can automatically wait for these dependencies to become available before launching your services, ensuring smooth and efficient operation, and correct start up order**
 
 ## What can this docker comtainer do?
