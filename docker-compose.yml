@@ -3,9 +3,17 @@ services:
   connortest:
     build: .
     environment:
+      # Wait time in TIMED mode. If you use WATCH mode, this will check for the wwtch file for this time period, repeatedly, until the file is found. In WATCH mode, the container will report UNHEALTHY after this time period until the file is found 
       - WAIT_TIME=5
+      # Supported modes are WATCH and TIMED - WATCH will monitor for a file existing, timed is just a delay/timer
+      - MODE=WATCH
+      # Time in seconds to mark as healthy until the docker self terminates. Set to 0 to disable this behaviour 
       - STOP_TIME=10
-      - WATCH_FILE="tesegegt.txt"
+      # Watch file to check for, not needed if using TIMED mode
+      - WATCH_FILE="testfile.txt"
+    volumes:
+      # The entire volumes section is only required if you are using WATCH mode
+      - /host/path/here:/container/path/here
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]
       interval: 5s
